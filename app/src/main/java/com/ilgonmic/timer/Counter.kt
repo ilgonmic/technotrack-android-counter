@@ -3,6 +3,7 @@ package com.ilgonmic.timer
 import android.os.CountDownTimer
 
 class Counter(
+    private val min: Int = 1,
     private val max: Int,
     private val onTick: (Int) -> Unit,
     private val onFinish: () -> Unit
@@ -13,10 +14,13 @@ class Counter(
 
     private val timer: CountDownTimer
 
-    private var count = 1
+    var count = min
+        private set(value) {
+            field = value
+        }
 
     init {
-        timer = object : CountDownTimer(max * 1000 + GAP, 1000) {
+        timer = object : CountDownTimer((max - min + 1) * 1000 + GAP, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
 

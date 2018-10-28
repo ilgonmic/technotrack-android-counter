@@ -4,18 +4,23 @@ import android.widget.Button
 
 class Toggler(
     private val button: Button,
-    private val actionEnable: (Button) -> Unit,
-    private val actionDisable: (Button) -> Unit,
-    private var enabled: Boolean = true
+    private val onEnable: (Button) -> Unit,
+    private val onDisable: (Button) -> Unit,
+    var enabled: Boolean = false
 ) {
+    init {
+        if (enabled) {
+            onEnable(button)
+        }
+    }
+
     fun toggle() {
-        val savedEnabled = enabled
         enabled = !enabled
 
-        if (savedEnabled) {
-            actionEnable(button)
+        if (enabled) {
+            onEnable(button)
         } else {
-            actionDisable(button)
+            onDisable(button)
         }
     }
 }

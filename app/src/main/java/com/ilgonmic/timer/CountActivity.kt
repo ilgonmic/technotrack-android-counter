@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_count.*
 
 class CountActivity : AppCompatActivity() {
 
+    lateinit var counter: Counter
     lateinit var toggler: Toggler
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,12 +59,17 @@ class CountActivity : AppCompatActivity() {
             Ordinal.THOUSAND to getString(R.string.thousand)
         )
 
+        val minCount = savedInstanceState?.getInt("COUNT") ?: 1
+        val toggleEnabled = savedInstanceState?.getBoolean("IS_COUNT_ACTIVE") ?: false
+
         setContentView(R.layout.activity_count)
 
-        val counter = Counter(
+
+        counter = Counter(
+            min = minCount,
             max = 1_000,
             onTick = {
-                this@CountActivity.counter.text = convert(it, dictionary)
+                this@CountActivity.textBox.text = convert(it, dictionary)
             },
             onFinish = {
                 toggler.toggle()
@@ -72,16 +78,23 @@ class CountActivity : AppCompatActivity() {
 
         toggler = Toggler(
             button = control,
-            actionEnable = {
+            onEnable = {
                 it.text = getString(R.string.stop)
                 counter.start()
             },
-            actionDisable = {
+            onDisable = {
                 it.text = getString(R.string.start)
                 counter.clear()
-            }
+            },
+            enabled = toggleEnabled
         )
 
         control.setOnClickListener { toggler.toggle() }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        outState?.putInt("COUNT", counter.count)
+        outState?.putBoolean("IS_COUNT_ACTIVE", toggler.enabled)
+        super.onSaveInstanceState(outState)
     }
 }
