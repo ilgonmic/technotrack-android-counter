@@ -1,9 +1,7 @@
 package com.ilgonmic.timer
 
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.support.v7.app.AppCompatActivity
-import android.widget.Button
 import com.ilgonmic.converter.Ordinal
 import com.ilgonmic.converter.convert
 import kotlinx.android.synthetic.main.activity_count.*
@@ -62,38 +60,25 @@ class CountActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_count)
 
-        val control = findViewById<Button>(R.id.control)
-
-        val timer = object : CountDownTimer(11_000, 1000) {
-            private var counter = 1
-
-            fun clear() {
-                counter = 1
+        val counter = Counter(
+            max = 1_000,
+            onTick = {
+                this@CountActivity.counter.text = convert(it, dictionary)
+            },
+            onFinish = {
+                toggler.toggle()
             }
-
-            override fun onTick(millisUntilFinished: Long) {
-                this@CountActivity.counter.also {
-                    it.text = convert(counter, dictionary)
-                }
-
-                counter++
-            }
-
-            override fun onFinish() {
-                control.text = getString(R.string.stop)
-            }
-        }
+        )
 
         toggler = Toggler(
             button = control,
             actionEnable = {
                 it.text = getString(R.string.stop)
-                timer.start()
+                counter.start()
             },
             actionDisable = {
                 it.text = getString(R.string.start)
-                timer.cancel()
-                timer.clear()
+                counter.clear()
             }
         )
 
