@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="zero">ноль</string>
+    <string name="one">один</string>
+    <string name="two">два</string>
+    <string name="three">три</string>
+    <string name="four">четыре</string>
+    <string name="five">пять</string>
+    <string name="six">шесть</string>
+    <string name="seven">семь</string>
+    <string name="eight">восемь</string>
+    <string name="nine">девять</string>
+
+    <string name="ten">десять</string>
+    <string name="eleven">одиннадцать</string>
+    <string name="twelve">двенадцать</string>
+    <string name="thirteen">тринадцать</string>
+    <string name="fourteen">четырнадцать</string>
+    <string name="fifteen">пятнадцать</string>
+    <string name="sixteen">шестнадцать</string>
+    <string name="seventeen">семнадцать</string>
+    <string name="eighteen">восемнадцать</string>
+    <string name="nineteen">девятнадцать</string>
+
+    <string name="twenty">двадцать</string>
+    <string name="thirty">тридцать</string>
+    <string name="fourty">сорок</string>
+    <string name="fifty">пятьдесят</string>
+    <string name="sixty">шестьдесят</string>
+    <string name="seventy">семьдесят</string>
+    <string name="eighty">восемьдесят</string>
+    <string name="ninety">девяносто</string>
+
+    <string name="hundred">сто</string>
+    <string name="hundred_2">двести</string>
+    <string name="hundred_3">триста</string>
+    <string name="hundred_4">четыреста</string>
+    <string name="hundred_5">пятьсот</string>
+    <string name="hundred_6">шестьсот</string>
+    <string name="hundred_7">семьсот</string>
+    <string name="hundred_8">восемьсот</string>
+    <string name="hundred_9">девятьсот</string>
+
+    <string name="thousand">тысяча</string>
+</resources>
