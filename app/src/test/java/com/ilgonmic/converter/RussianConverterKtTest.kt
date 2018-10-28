@@ -70,8 +70,8 @@ class RussianConverterKtTest {
     @Test
     fun convert811() {
         assertEquals(
-            "восеьмсот одиннадцать",
-            convert(911, dictionary)
+            "восемьсот одиннадцать",
+            convert(811, dictionary)
         )
     }
 
