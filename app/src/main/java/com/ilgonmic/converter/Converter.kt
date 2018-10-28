@@ -24,9 +24,7 @@ fun convert(
 
     }
 
-    val order = value.length() - 1
-
-    return when (order) {
+    return when (value.length()) {
         1 -> convertUnits(value)
         2 -> convertDecimals(value)
         3 -> convertHundreds(value)
