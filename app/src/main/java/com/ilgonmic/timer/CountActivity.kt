@@ -8,12 +8,13 @@ import kotlinx.android.synthetic.main.activity_count.*
 
 class CountActivity : AppCompatActivity() {
 
-    lateinit var counter: Counter
-    lateinit var toggler: Toggler
+    private lateinit var counter: Counter
+    private lateinit var toggler: Toggler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //todo Move this initialization
         val dictionary = mapOf(
             Ordinal.ZERO to getString(R.string.zero),
             Ordinal.ONE to getString(R.string.one),
@@ -63,7 +64,6 @@ class CountActivity : AppCompatActivity() {
         val toggleEnabled = savedInstanceState?.getBoolean("IS_COUNT_ACTIVE") ?: false
 
         setContentView(R.layout.activity_count)
-
 
         counter = Counter(
             min = minCount,
